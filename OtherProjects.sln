@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32413.511
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextMenuTest", "Projects\ContextMenuTest\ContextMenuTest\ContextMenuTest.csproj", "{36900C19-B24A-4659-82D1-F83337AB4262}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextMenuTest", "Projects\ContextMenuTest\ContextMenuTest.csproj", "{36900C19-B24A-4659-82D1-F83337AB4262}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
