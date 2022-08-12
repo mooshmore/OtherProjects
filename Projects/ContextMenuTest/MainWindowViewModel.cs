@@ -17,11 +17,12 @@ namespace ContextMenuTest
             DisplayNameCommand = new RelayCommand(DisplayName);
             DisplaySurnameCommand = new RelayCommand(DisplaySurname);
 
-            PeopleList = new List<Person>();
-
-            PeopleList.Add(new Person("Julie", "Azures"));
-            PeopleList.Add(new Person("Mack", "McMack"));
-            PeopleList.Add(new Person("Josh", "Broccoli"));
+            PeopleList = new List<Person>
+            {
+                new Person("Julie", "Azures"),
+                new Person("Mack", "McMack"),
+                new Person("Josh", "Broccoli")
+            };
 
             UpdateCurrentObjectCommand = new RelayCommand(UpdateCurrentObject);
         }
