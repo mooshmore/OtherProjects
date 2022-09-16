@@ -96,7 +96,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Projects\ContextMenuTest\ContextMenuTest.csproj">
+    <ProjectReference Include="..\ContextMenuTest\ContextMenuTest.csproj">
       <Project>{36900C19-B24A-4659-82D1-F83337AB4262}</Project>
       <Name>ContextMenuTest</Name>
     </ProjectReference>

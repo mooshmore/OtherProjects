@@ -24,9 +24,9 @@ namespace WriteableBitmapTest
             //Image = new WriteableBitmap(absoluteImage);
 
             // But using a relative path with a WriteableBitmap doesn't work
-            Uri relativePath = new Uri(@"Images\missingProfile.jpg", UriKind.Relative);
-            BitmapImage relativeImage = new BitmapImage(relativePath);
-            Image = new WriteableBitmap(relativeImage);
+            //Uri relativePath = new Uri(@"Images\missingProfile.jpg", UriKind.Relative);
+            //BitmapImage relativeImage = new BitmapImage(relativePath);
+            //Image = new WriteableBitmap(relativeImage);
         }
 
         //public BitmapImage Image { get; set; }
