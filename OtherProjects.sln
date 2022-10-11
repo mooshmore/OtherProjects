@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MenuTest", "Projects\MenuTe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WriteableBitmapTest", "Projects\WriteableBitmapTest\WriteableBitmapTest.csproj", "{ACEB09B8-8A9E-42BB-80FB-ADDB8FB26E30}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2TestTask", "K2TestTask\K2TestTask.csproj", "{18F64445-17D2-4F98-9CE7-920BF60B0F54}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "K2TestTask", "Projects\K2TestTask\K2TestTask.csproj", "{18F64445-17D2-4F98-9CE7-920BF60B0F54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
