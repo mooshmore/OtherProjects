@@ -1,0 +1,28 @@
+﻿<Window x:Class="ConverterCollectionIssue.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ConverterCollectionIssue"
+        xmlns:converters="clr-namespace:Utilities.WPF.BindingConverters" 
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        d:DataContext="{d:DesignInstance Type=local:MainWindowViewModel}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <converters:CellToValueConverter x:Key="CellToValue"/>
+            <converters:CellsToValuesConverter x:Key="CellsToValues"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <DataGrid ItemsSource="{Binding DataTable}" x:Name="MainDataGrid" SelectionUnit="Cell">
+            <DataGrid.InputBindings>
+                <KeyBinding Command="{Binding MutliCommand}" Gesture="CTRL+A" CommandParameter="{Binding Path=SelectedCells, ElementName=MainDataGrid, Converter={StaticResource CellsToValues}}"/>
+                <KeyBinding Command="{Binding SingleCommand}" Gesture="CTRL+E" CommandParameter="{Binding Path=CurrentCell, ElementName=MainDataGrid, Converter={StaticResource CellToValue}}"/>
+            </DataGrid.InputBindings>
+            
+        </DataGrid>
+    </Grid>
+</Window>
