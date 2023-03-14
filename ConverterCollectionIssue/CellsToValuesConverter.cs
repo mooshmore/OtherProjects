@@ -20,8 +20,8 @@ namespace Utilities.WPF.BindingConverters
         /// </summary>
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var cellInfos = (IEnumerable<DataGridCellInfo>)value;
-            List<object> cellValues = cellInfos
+            var cellCollection = (IEnumerable<DataGridCellInfo>)value;
+            List<object?> cellValues = cellCollection
                 .Select(cellInfo =>
                 {
                     if (!(cellInfo.Item is DataRowView dataRowView))

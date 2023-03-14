@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using ViewModelBaseNamespace;
 
 namespace ConverterCollectionIssue
@@ -25,13 +26,16 @@ namespace ConverterCollectionIssue
             DataTable.Rows.Add("0D", "1D");
             DataTable.Rows.Add("0E", "1E");
 
-            MutliCommand = new RelayCommand(MultiMethod);
+            ConvertCommand = new RelayCommand(ConverterMethod);
+            DirectCommand = new RelayCommand(DirectMethod);
             SingleCommand = new RelayCommand(SingleMethod);
         }
 
-        private void MultiMethod(object obj)
+        // Multi cell with converting
+        private void ConverterMethod(object obj)
         {
-            var collection = (ICollection)obj;
+            // With converting
+            var collection = (List<object>)obj;
             foreach (var item in collection)
             {
                 Debug.WriteLine(item.ToString());
@@ -40,6 +44,32 @@ namespace ConverterCollectionIssue
             Console.WriteLine("Done displaying");
         }
 
+        // Multi cell without converting
+        private void DirectMethod(object obj)
+        {
+            var cellCollection = (IEnumerable<DataGridCellInfo>)obj;
+            List<object?> cellValues = cellCollection
+                .Select(cellInfo =>
+                {
+                    if (!(cellInfo.Item is DataRowView dataRowView))
+                    {
+                        return null;
+                    }
+
+                    return dataRowView[cellInfo.Column.DisplayIndex];
+                })
+                .ToList();
+
+
+            foreach (var item in cellValues)
+            {
+                Debug.WriteLine(item?.ToString());
+            }
+
+            Console.WriteLine("Done displaying");
+        }
+
+        // Current cell with converting
         private void SingleMethod(object obj)
         {
             Debug.WriteLine(obj.ToString());
@@ -47,8 +77,8 @@ namespace ConverterCollectionIssue
         }
 
         public DataTable DataTable { get; set; }
-
-        public RelayCommand MutliCommand { get; set; }
+        public RelayCommand ConvertCommand { get; set; }
+        public RelayCommand DirectCommand { get; set; }
         public RelayCommand SingleCommand { get; set; }
     }
 }

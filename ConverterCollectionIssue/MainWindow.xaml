@@ -19,7 +19,8 @@
     <Grid>
         <DataGrid ItemsSource="{Binding DataTable}" x:Name="MainDataGrid" SelectionUnit="Cell">
             <DataGrid.InputBindings>
-                <KeyBinding Command="{Binding MutliCommand}" Gesture="CTRL+A" CommandParameter="{Binding Path=SelectedCells, ElementName=MainDataGrid, Converter={StaticResource CellsToValues}}"/>
+                <KeyBinding Command="{Binding ConvertCommand}" Gesture="CTRL+A" CommandParameter="{Binding Path=SelectedCells, ElementName=MainDataGrid, Converter={StaticResource CellsToValues}}"/>
+                <KeyBinding Command="{Binding DirectCommand}" Gesture="CTRL+W" CommandParameter="{Binding Path=SelectedCells, ElementName=MainDataGrid}"/>
                 <KeyBinding Command="{Binding SingleCommand}" Gesture="CTRL+E" CommandParameter="{Binding Path=CurrentCell, ElementName=MainDataGrid, Converter={StaticResource CellToValue}}"/>
             </DataGrid.InputBindings>
             
