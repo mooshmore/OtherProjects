@@ -24,9 +24,8 @@ namespace Utilities.WPF.BindingConverters
             if (cellInfo.Column == null)
                 return null;
 
-            int columnIndex = cellInfo.Column.DisplayIndex;
             DataRow dataRow = ((DataRowView)cellInfo.Item).Row;
-            return dataRow.ItemArray[columnIndex];
+            return dataRow.ItemArray[cellInfo.Column.DisplayIndex];
         }
 
         /// <summary>

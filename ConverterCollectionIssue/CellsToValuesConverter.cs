@@ -21,21 +21,23 @@ namespace Utilities.WPF.BindingConverters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var cellCollection = (IEnumerable<DataGridCellInfo>)value;
-            List<object?> cellValues = cellCollection
-                .Select(cellInfo =>
-                {
-                    if (!(cellInfo.Item is DataRowView dataRowView))
-                    {
-                        return null;
-                    }
 
-                    return dataRowView[cellInfo.Column.DisplayIndex];
-                })
-                .ToList();
+            var convertedValues = new List<object>();
+            foreach (var item in cellCollection)
+            {
+                if (item == null)
+                    convertedValues.Add(null);
 
-            // Added to display that the converter value doesn't change
-            cellValues.Add(new Random().Next());
-            return cellValues;
+                DataGridCellInfo cellInfo = (DataGridCellInfo)item;
+
+                if (cellInfo.Column == null)
+                    convertedValues.Add(null);
+
+                DataRow dataRow = ((DataRowView)cellInfo.Item).Row;
+                convertedValues.Add(dataRow.ItemArray[cellInfo.Column.DisplayIndex]);
+            }
+
+            return convertedValues;
         }
 
         /// <summary>

@@ -48,17 +48,20 @@ namespace ConverterCollectionIssue
         private void DirectMethod(object obj)
         {
             var cellCollection = (IEnumerable<DataGridCellInfo>)obj;
-            List<object?> cellValues = cellCollection
-                .Select(cellInfo =>
-                {
-                    if (!(cellInfo.Item is DataRowView dataRowView))
-                    {
-                        return null;
-                    }
+            var cellValues = new List<object>();
+            foreach (var item in cellCollection)
+            {
+                if (item == null)
+                    cellValues.Add(null);
 
-                    return dataRowView[cellInfo.Column.DisplayIndex];
-                })
-                .ToList();
+                DataGridCellInfo cellInfo = (DataGridCellInfo)item;
+
+                if (cellInfo.Column == null)
+                    cellValues.Add(null);
+
+                DataRow dataRow = ((DataRowView)cellInfo.Item).Row;
+                cellValues.Add(dataRow.ItemArray[cellInfo.Column.DisplayIndex]);
+            }
 
 
             foreach (var item in cellValues)
